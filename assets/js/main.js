@@ -1,69 +1,89 @@
-// main.js - custom JS for portfolio
+// Current year for footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-(function () {
-    "use strict";
+// Scroll to top button
+const scrollTopBtn = document.querySelector('.scroll-top');
 
-    // Activate Bootstrap ScrollSpy
-    const scrollSpyTargets = document.querySelectorAll('[data-bs-spy="scroll"]');
-    scrollSpyTargets.forEach(el => {
-        bootstrap.ScrollSpy.getInstance(el) || new bootstrap.ScrollSpy(el, {
-            offset: 75,
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 100) {
+        navbar.classList.add('navbar-glass');
+    } else {
+        navbar.classList.remove('navbar-glass');
+    }
+});
+
+// Initialize scrollspy
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Add click event listeners
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            // Remove active class from all links
+            navLinks.forEach(l => l.parentElement.classList.remove('active'));
+
+            // Add active class to clicked link's parent
+            this.parentElement.classList.add('active');
         });
     });
 
-    // Collapse responsive navbar on link click
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarNav = document.getElementById('navbarNav');
+    // Initialize scroll animations
+    const animateElements = document.querySelectorAll('.animate');
 
-    document.querySelectorAll('#navbarNav .nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarNav) || new bootstrap.Collapse(navbarNav, { toggle: false });
-                bsCollapse.hide();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    animateElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
+
+    // Handle scrollspy for active nav items
+    window.addEventListener('scroll', function () {
+        const sections = document.querySelectorAll('section');
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 100)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.parentElement.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.parentElement.classList.add('active');
             }
         });
     });
-
-    // Set current year in footer
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-    /* ---------------------
-       Reveal on scroll
-    ---------------------*/
-    // Mark containers as reveal targets (excluding hero)
-    document.querySelectorAll('.section-full .container').forEach(el => {
-        el.classList.add('reveal');
-    });
-
-    const revealObserver = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target); // reveal once
-                }
-            });
-        },
-        { threshold: 0.15 }
-    );
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    /* ---------------------
-       Navbar glass effect
-    ---------------------*/
-    const navbar = document.getElementById('navbar');
-    const onScroll = () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('navbar-glass');
-        } else {
-            navbar.classList.remove('navbar-glass');
-        }
-    };
-
-    onScroll();
-    window.addEventListener('scroll', onScroll);
-})();
+});
