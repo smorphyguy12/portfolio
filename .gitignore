@@ -1,0 +1,9 @@
+# Node dependencies (if any)
+node_modules/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env

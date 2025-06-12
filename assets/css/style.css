@@ -1,0 +1,206 @@
+/* Custom Styles */
+:root {
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --dark: #212529;
+    --light: #ffffff;
+    --alt-bg: #f2f8ff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+section {
+    scroll-margin-top: 80px; /* offset for fixed navbar */
+    padding: 4rem 0;
+}
+
+/* Full-height sections */
+.section-full {
+    min-height: 100vh; /* full viewport height */
+    display: flex;
+    align-items: center;
+}
+
+.section-full .container {
+    flex: 1 1 auto;
+}
+
+/* Headings */
+h2 {
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("../img/hero.jpg") center/cover no-repeat;
+    color: var(--light);
+}
+
+.hero-section .btn-primary {
+    padding: 0.75rem 2rem;
+}
+
+/* Hero two-column layout tweaks */
+.hero-section .hero-img {
+    width: 80%;
+    max-width: 350px;
+}
+
+@media (min-width: 992px) {
+    .hero-section .hero-img {
+        width: 85%;
+        max-width: 420px;
+    }
+}
+
+.hero-section .btn-outline-light {
+    color: var(--light);
+    border-color: var(--light);
+}
+
+.hero-section .btn-outline-light:hover {
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    margin-left: 1rem;
+    padding-left: 1rem;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--light);
+    border: 4px solid var(--primary);
+}
+
+/* Navbar */
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+/* Glass effect on navbar */
+.navbar-glass {
+    background-color: rgba(33, 37, 41, 0.75) !important; /* dark with opacity */
+    backdrop-filter: blur(6px);
+    transition: background-color 0.3s ease;
+}
+
+/* Section Headings */
+section h2 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Progress Bar */
+.progress {
+    height: 0.75rem;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Card Hover Effects */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Stats cards in About section */
+.stat-card {
+    background: var(--light);
+}
+
+.stat-card .display-6 {
+    color: var(--primary);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+/* Alternate light-blue background */
+.bg-alt {
+    background-color: var(--alt-bg) !important;
+}
+
+/* Icon buttons */
+.btn-icon {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 0;
+}
+
+/* Skill icons */
+.skill-icon {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    color: var(--primary);
+}
+
+/* Button transition */
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: none;
+}
+
+/* Footer */
+footer {
+    font-size: 0.875rem;
+}
+
+/* Utilities */
+.bg-light {
+    background-color: var(--light) !important;
+}
