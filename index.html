@@ -1,17 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>M.S.B.P | Portfolio</title>
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Enhanced Project Section Styles */
+        .projects-section {
+            background-color: #f8f9fa;
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #0d6efd;
+        }
+
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background: #fff;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #212529;
+        }
+
+        .project-description {
+            color: #6c757d;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0.35em 0.65em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            background-color: #e9f0ff;
+            color: #0d6efd;
+            margin: 0.2rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .project-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            padding: 0.5rem 1.25rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #0d6efd;
+            color: white;
+            border-color: #0d6efd;
+        }
+
+        /* Animation for project cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+    </style>
 </head>
+
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="75" tabindex="0">
 
     <!-- Scroll to Top Button -->
@@ -23,7 +181,8 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm navbar-glass">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#home">M.S.B.P</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,11 +190,13 @@
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="d-flex align-items-center">
-                <a href="https://drive.google.com/file/d/15kqCN2LP87azI_g4AxDKCbudKOgHLN_R/view?usp=drive_link" target="_blank" class="btn btn-outline-primary btn-sm ms-2 text-uppercase fw-bold">Resume</a>
+                <a href="https://drive.google.com/file/d/15kqCN2LP87azI_g4AxDKCbudKOgHLN_R/view?usp=drive_link"
+                    target="_blank" class="btn btn-outline-primary btn-sm ms-2 text-uppercase fw-bold">Resume</a>
             </div>
         </div>
     </nav>
@@ -45,19 +206,25 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 text-center text-lg-start animate">
-                    <h1 class="display-4 fw-bold mb-3">Hi, I'm <span class="text-primary">Mark Steven B. Peligro</span></h1>
+                    <h1 class="display-4 fw-bold mb-3">Hi, I'm <span class="text-primary">Mark Steven B. Peligro</span>
+                    </h1>
                     <p class="lead mb-4">
-                        I'm a passionate and detail-oriented Web Developer with 3 years of experience in designing, developing, and managing complex websites and internal frameworks.
+                        I'm a passionate and detail-oriented Web Developer with 3 years of experience in designing,
+                        developing, and managing complex websites and internal frameworks.
                     </p>
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2 mb-4">
-                        <a href="#skills" class="btn btn-primary btn-lg me-2">My Skills</a>
+                        <a href="#projects" class="btn btn-primary btn-lg me-2">View Projects</a>
                         <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
                     </div>
                     <!-- Social Links -->
                     <div class="mt-4 social-links d-flex">
-                        <a href="https://github.com/smorphyguy12" class="btn btn-outline-light btn-icon me-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-                        <a href="https://www.facebook.com/mark.steven.688036" class="btn btn-outline-light btn-icon me-2" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
-                        <a href="mailto:kmar0956@gmail.com" class="btn btn-outline-light btn-icon" rel="noopener"><i class="bi bi-envelope"></i></a>
+                        <a href="https://github.com/smorphyguy12" class="btn btn-outline-light btn-icon me-2"
+                            target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
+                        <a href="https://www.facebook.com/mark.steven.688036"
+                            class="btn btn-outline-light btn-icon me-2" target="_blank" rel="noopener"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="mailto:kmar0956@gmail.com" class="btn btn-outline-light btn-icon" rel="noopener"><i
+                                class="bi bi-envelope"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center mt-5 mt-lg-0 animate">
@@ -73,7 +240,11 @@
             <h2 class="text-center mb-5">About Me</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <p class="lead text-center text-lg-start mb-5">Creative and detail-oriented Web Developer with 3 years of experience in designing, developing, and managing complex websites and internal frameworks. Proficient in front-end and back-end development with a passion for responsive design, clean code, and user-centered solutions. Proven ability to collaborate with cross-functional teams to deliver high-quality web applications.</p>
+                    <p class="lead text-center text-lg-start mb-5">Creative and detail-oriented Web Developer with 3
+                        years of experience in designing, developing, and managing complex websites and internal
+                        frameworks. Proficient in front-end and back-end development with a passion for responsive
+                        design, clean code, and user-centered solutions. Proven ability to collaborate with
+                        cross-functional teams to deliver high-quality web applications.</p>
                 </div>
             </div>
 
@@ -107,29 +278,143 @@
             <h2 class="text-center mb-5">Skills</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6 mb-4">
-                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i class="bi bi-filetype-html skill-icon"></i> HTML &amp; CSS</h5>
-                    <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div></div>
+                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i
+                            class="bi bi-filetype-html skill-icon"></i> HTML &amp; CSS</h5>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                            aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i class="bi bi-filetype-js skill-icon"></i> JavaScript</h5>
-                    <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div></div>
+                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i
+                            class="bi bi-filetype-js skill-icon"></i> JavaScript</h5>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75"
+                            aria-valuemin="0" aria-valuemax="100">75%</div>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i class="bi bi-bootstrap-fill skill-icon"></i> Bootstrap</h5>
-                    <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div></div>
+                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i
+                            class="bi bi-bootstrap-fill skill-icon"></i> Bootstrap</h5>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85"
+                            aria-valuemin="0" aria-valuemax="100">85%</div>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i class="bi bi-filetype-php skill-icon"></i> PHP</h5>
-                    <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div></div>
+                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i
+                            class="bi bi-filetype-php skill-icon"></i> PHP</h5>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                            aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i class="bi bi-database skill-icon"></i> MySQL</h5>
-                    <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div></div>
+                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i
+                            class="bi bi-database skill-icon"></i> MySQL</h5>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                            aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i class="bi bi-cloud skill-icon"></i> Laravel</h5>
-                    <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div></div>
+                    <h5 class="d-flex align-items-center justify-content-center justify-content-md-start mb-3"><i
+                            class="bi bi-cloud skill-icon"></i> Laravel</h5>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70"
+                            aria-valuemin="0" aria-valuemax="100">70%</div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="text-center section-title">Projects</h2>
+            <p class="lead text-center mb-5 mx-auto" style="max-width: 700px;">Here are some of my recent projects
+                showcasing my skills and expertise in web development.</p>
+
+            <!-- Project Filter -->
+            <div class="filter-container">
+
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4" data-category="web">
+                    <div class="project-card">
+                        <img src="assets/img/projects/voting-system.png"
+                            alt="Voting System" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">Voting System</h3>
+                            <p class="project-description">A voting system for online voting with course
+                                creation, student enrollment, and progress tracking features.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Bootstrap 5</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-primary project-btn">Live Demo</a>
+                                <a href="https://github.com/smorphyguy12/voting_system" target="_blank" class="btn btn-outline-primary project-btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4" data-category="web">
+                    <div class="project-card">
+                        <img src="assets/img/projects/queuing-system.png"
+                            alt="Queuing System" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">Queuing System</h3>
+                            <p class="project-description">A queuing system for managing customer queues with features like queue management, customer tracking, and payment processing.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://priority.slsuisa.com/" target="_blank" class="btn btn-primary project-btn">Live Demo</a>
+                                <a href="#" class="btn btn-outline-primary project-btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E Class Record -->
+                <div class="col-md-6 col-lg-4" data-category="web">
+                    <div class="project-card">
+                        <img src="assets/img/projects/e-class-record.png"
+                            alt="E Class Record" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">E Class Record</h3>
+                            <p class="project-description">An e-class record system for managing student records with features like student management, course management, and progress tracking.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://eclass.slsuisa.com/" target="_blank" class="btn btn-primary project-btn">Live Demo</a>
+                                <a href="#" class="btn btn-outline-primary project-btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-more">
+                <a href="#" class="btn btn-outline-primary">View All Projects</a>
             </div>
         </div>
     </section>
@@ -154,14 +439,16 @@
                                 <i class="bi bi-envelope-fill me-3 text-primary fs-4"></i>
                                 <div>
                                     <h5 class="mb-1">Email</h5>
-                                    <p class="text-muted mb-0"><a href="mailto:kmar0956@gmail.com" class="link-dark text-decoration-none">kmar0956@gmail.com</a></p>
+                                    <p class="text-muted mb-0"><a href="mailto:kmar0956@gmail.com"
+                                            class="link-dark text-decoration-none">kmar0956@gmail.com</a></p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-start">
                                 <i class="bi bi-telephone-fill me-3 text-primary fs-4"></i>
                                 <div>
                                     <h5 class="mb-1">Phone</h5>
-                                    <p class="text-muted mb-0"><a href="tel:+639123456789" class="link-dark text-decoration-none">+63 912 345 6789</a></p>
+                                    <p class="text-muted mb-0"><a href="tel:+639123456789"
+                                            class="link-dark text-decoration-none">+63 912 345 6789</a></p>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +469,8 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label fw-medium">Message</label>
-                                    <textarea class="form-control" rows="5" required placeholder="Type your message here"></textarea>
+                                    <textarea class="form-control" rows="5" required
+                                        placeholder="Type your message here"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">Send Message</button>
                             </form>
@@ -202,6 +490,37 @@
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script>
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Project filter functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('[data-category]');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
